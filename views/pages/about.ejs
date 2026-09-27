@@ -2,7 +2,9 @@
 <html data-theme="purple" data-font="Lato" lang="en">
 
 <head>
-  <%- include('../partials/head', { pageTitle: pageTitle }) %>
+  <%- include('../partials/head') %>
+  <title><%= pageTitle %></title>
+  <link rel="canonical" href="https://ujwalwadhai.me/about">
     <meta property="og:title" content="<%= pageTitle %>">
     <meta property="og:type" content="article">
     <meta property="og:description" content="Who the hell is Ujwal Wadhai? Find out more about the person behind this blog.">
@@ -16,7 +18,7 @@
         "mainEntity": {
           "@type": "Person",
           "name": "Ujwal Wadhai",
-          "description": "Computer science student, developer and writer.",
+          "description": "Computer science student, developer and writer and professional overthinker.",
           "url": "https://ujwalwadhai.me/about",
           "image": "https://ujwalwadhai.me/images/photo.jpeg",
           "sameAs": [

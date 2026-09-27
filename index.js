@@ -37,7 +37,7 @@ app.get('/', async (req, res, next) => {
 
     res.render('pages/index', {
       posts,
-      pageTitle: 'Blogs',
+      pageTitle: 'Blogs by Ujwal',
       activePage: 'home'
     });
   } catch (error) {
@@ -92,7 +92,7 @@ Sitemap: https://ujwalwadhai.me/sitemap.xml
 });
 
 app.get('/sitemap.xml', async (req, res) => {
-  const posts = await BlogPosts.find({ deleted: { $ne: false } })
+  const posts = await BlogPosts.find({ deleted: { $ne: true } })
   const urls = posts.map(post => `
         <url>
             <loc>https://ujwalwadhai.me/blog/${post.alt_id}</loc>
@@ -110,7 +110,7 @@ app.get('/sitemap.xml', async (req, res) => {
         </url>
         ${urls}
     </urlset>`;
-
+    console.log(urls)
   res.type('application/xml').send(sitemap);
 });
 

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><%- include('../partials/head', { pageTitle: pageTitle }) %></head>
+<head>
+  <%- include('../partials/head') %>
+  <title>500 Page Not Found</title>
+</head>
 <body>
   <%- include('../partials/navbar', { activePage: '' }) %>
   <main class="simple-page"><section class="simple-card error-card"><span class="error-code">500</span><h1>Something went wrong</h1><p>The website couldn't load the requested page. Please try again.</p><a class="hero-link" href="/">Back to blogs <span class="fal fa-arrow-right"></span></a></section></main>

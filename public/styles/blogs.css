@@ -300,9 +300,9 @@ main {
 }
 
 .article-excerpt {
-    font-size: 19px;
+    font-size: 18px;
     color: var(--muted);
-    line-height: 1.75;
+    line-height: 1.65;
     margin: 0;
 }
 
