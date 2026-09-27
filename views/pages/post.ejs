@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head', { pageTitle: pageTitle }) %>
+  <meta property="og:title" content="<%= pageTitle %>">
+  <meta property="og:type" content="article">
+  <meta property="og:description" content="<%= post.excerpt %>">
+  <meta name="description" content="<%= post.excerpt %>">
+  <link rel="canonical" href="https://ujwalwadhai.me/blog/<%= post._id %>">
+  <link rel="canonical" href="https://ujwalwadhai.me/blog/<%= post.alt_id %>">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "<%= post.title %>",
+      "datePublished": "<%= post.createdAt %>",
+      "dateModified": "<%= post.updatedAt %>",
+      "author": {
+        "@type": "Person",
+        "name": "Ujwal Wadhai",
+        "url": "https://ujwalwadhai.me/about"
+      }
+    }
+  </script>
+</head>
+<body>
+  <%- include('../partials/navbar', { activePage: 'home' }) %>
+
+  <main class="article-page">
+    <article class="article">
+      <a href="/" class="back-link"><span class="fal fa-arrow-left"></span> &nbsp; &nbsp;Back to blogs</a><br><br><br>
+
+      <header class="article-header">
+        <div class="article-meta">
+          <span><%= new Date(post.createdAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'long', year: 'numeric' }) %></span>
+          <% if (post.author) { %>
+            <span>•</span><span>By <%= post.author %></span>
+          <% } %>
+        </div>
+        <h1><%= pageTitle %></h1>
+        <% if (post.excerpt) { %><p class="article-excerpt"><%= post.excerpt %></p><% } %>
+      </header>
+
+      <% if (post.media && post.media.url && String(post.media.type || '').startsWith('image')) { %>
+        <img class="article-cover" src="<%= post.media.url %>" alt="<%= post.media.alt || pageTitle %>">
+      <% } %>
+
+      <div class="article-content">
+        <%- sanitizeHtml(post.content || '') %>
+      </div>
+
+      <br>
+      <p style="color: grey; margin-bottom: 0;">Have something to share? <a style="color: var(--primary);" href="mailto:hello@ujwalwadhai.me">Send an email to Ujwal</a>.</p>
+
+      <footer class="article-footer">
+        <a href="/" class="read-link"><span class="fal fa-arrow-left"></span> All blogs</a>
+      </footer>
+    </article>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

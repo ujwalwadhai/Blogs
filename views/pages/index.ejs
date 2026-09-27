@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head', { pageTitle: pageTitle }) %>
+  <meta property="og:title" content="Blogs by Ujwal">
+  <meta property="og:description" content="A small corner on the internet for Ujwal's thoughts and ideas.">
+  <meta name="description" content="A small corner on the internet for Ujwal's thoughts and ideas.">
+</head>
+<body>
+  <%- include('../partials/navbar', { activePage: activePage }) %>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">My quiet corner on the internet</span>
+        <h1>Thoughts, ideas &amp;<br><span>stories.</span></h1>
+        <p>Welcome to my blog. Read through ideas, experiences, projects and things I find interesting (or stupid 😉).</p>
+        <a class="hero-link" href="#blogs">Explore blogs <span class="fal fa-arrow-down"></span></a>
+      </div>
+      <div class="hero-card" aria-hidden="true">
+        <div class="hero-card-top"><span></span><span></span><span></span></div>
+        <div class="hero-card-content">
+          <span class="hero-line short"></span>
+          <span class="hero-line"></span>
+          <span class="hero-line"></span>
+          <span class="hero-line medium"></span>
+          <div class="hero-card-note">I think too much,<br>so I write :)</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-section" id="blogs">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">From the archive</span>
+          <h2>Latest blogs</h2>
+        </div>
+        <span class="post-count"><%= posts.length %> <%= posts.length === 1 ? 'article' : 'articles' %></span>
+      </div>
+
+      <% if (posts.length === 0) { %>
+        <div class="empty-state">
+          <span class="fal fa-feather-pointed"></span>
+          <h3>No blogs yet</h3>
+          <p>Once a blog is published by me, it will appear here automatically.</p>
+        </div>
+      <% } else { %>
+        <div class="blog-grid">
+          <% posts.forEach((post) => { %>
+            <article class="blog-card">
+              <% if (post.media && post.media.url && String(post.media.type || '').startsWith('image')) { %>
+                <a href="/blog/<%= post.alt_id %>" class="card-image-link">
+                  <img src="<%= post.media.url %>" alt="<%= post.media.alt || getTitle(post) %>" class="card-image">
+                </a>
+              <% } else { %>
+                <a href="/blog/<%= post.alt_id %>" class="card-image-link placeholder-image">
+                  <span class="fal fa-feather-pointed"></span>
+                </a>
+              <% } %>
+
+              <div class="card-body">
+                <div class="card-meta">
+                  <% if (post.pin) { %>
+                    <span class="fas fa-thumbtack pin"></span>• 
+                  <% } else if (new Date(post.createdAt) >= new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)) { %>
+                    <span class="new-badge">NEW</span>• 
+                  <% } %> 
+                  <span><%= new Date(post.createdAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) %></span>
+                </div>
+                <h3><a href="/blog/<%= post.alt_id %>"><%= getTitle(post) %></a></h3>
+                <p><%= post.excerpt || getExcerpt(post) %></p>
+                <a class="read-link" href="/blog/<%= post.alt_id %>">Read article <span class="fal fa-arrow-right"></span></a>
+              </div>
+            </article>
+          <% }) %>
+        </div>
+      <% } %>
+    </section>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>
+

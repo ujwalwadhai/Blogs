@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html data-theme="purple" data-font="Lato" lang="en">
+
+<head>
+  <%- include('../partials/head', { pageTitle: pageTitle }) %>
+    <meta property="og:title" content="<%= pageTitle %>">
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="Who the hell is Ujwal Wadhai? Find out more about the person behind this blog.">
+    <meta name="description" content="Ujwal is a computer science student, developer and writer.">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "dateCreated": "2026-09-13",
+        "dateModified": "2026-09-13",
+        "mainEntity": {
+          "@type": "Person",
+          "name": "Ujwal Wadhai",
+          "description": "Computer science student, developer and writer.",
+          "url": "https://ujwalwadhai.me/about",
+          "image": "https://ujwalwadhai.me/images/photo.jpeg",
+          "sameAs": [
+            "https://www.instagram.com/justtt_ujwal",
+            "https://github.com/ujwalwadhai",
+            "https://linkedin.com/in/ujwalwadhai"
+          ]
+        }
+      }
+    </script>
+  </head>
+
+<body>
+  <%- include('../partials/navbar', { activePage: 'about' }) %>
+
+  <main class="profile-page">
+
+    <!-- Cover -->
+    <div class="cover-photo" style="
+      background:
+        linear-gradient(
+          rgba(0, 0, 0, 0.4),
+          rgba(0, 0, 0, 0.4)
+        ),
+        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80')
+        center center / cover no-repeat;
+    "></div>
+
+
+    <!-- Profile information -->
+    <div class="profile-info-container">
+
+      <div class="profile-photo">
+        <img src="/images/photo.jpeg" alt="Ujwal Wadhai">
+      </div>
+
+      <div class="user-details">
+
+        <p class="name">
+          Ujwal Wadhai
+        </p>
+
+        <p class="bio">
+          <span class="fal fa-microphone"></span> Mic check!!! <br><br>
+          Hi, I'm Ujwal 😃
+          <br><br>
+          I'm a computer science student, developer, professional overthinker, and someone who has probably spent too
+          much time overthinking things.
+          <br><br>
+          I like building things. Websites, apps, little designs, random ideas (that felt great at 2AM btw), and
+          friendships too. I'm currently doing B. Tech. so most of my life revolves around code, assignments,
+          debugging things, and wondering why the fuck I'm even doing this degree.
+          <br><br>
+          But this website isn't really my portfolio (or resume whatevah 😒).
+          <br><br>
+          It's more like my little diary. Yep I'm that guy who wrote diary.
+          <br><br>
+          I tend to have a lot of thoughts about completely unrelated things. I think a lot about college, future,
+          philosophy, friendships etc. But people say it's overthinking (duhh).
+          <br><br>
+          So I thought, instead of letting all those thoughts just stay in my head, I could give them some space. Well that's the
+          reason I made this website.
+          I don't really have a theme for this blog. I can write about literally anything I want. That's kinda the point.
+          <br><br>
+          Anyways, that's pretty much about me.<br>
+          I'm still figuring everything out in life. So for now, I'll just write.
+          <br><br>
+          -- Meeee (Ujwal Wadhai)
+        </p>
+
+        <div class="action-buttons">
+
+          <a href="mailto:hello@ujwalwadhai.me" class="action-btn primary">
+            <span class="fal fa-envelope"></span>
+            Email
+          </a>
+
+          <a href="https://www.instagram.com/justtt_ujwal" target="_blank" rel="noopener noreferrer"
+            class="action-btn">
+            <span class="fab fa-instagram"></span>
+            Instagram
+          </a>
+
+          <p class="action-btn special">
+            <a href="https://linkedin.com/in/ujwalwadhai" target="_blank" rel="noopener noreferrer"><span
+                class="fab fa-linkedin"></span></a>
+            <a href="https://github.com/ujwalwadhai" target="_blank" rel="noopener noreferrer"><span
+                class="fab fa-github"></span></a>
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <%- include('../partials/footer') %>
+
+</body>
+
+</html>

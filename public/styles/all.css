@@ -1,0 +1,45 @@
+@font-face {
+    font-family: Lato;
+    src: url("/fonts/Lato.ttf");
+}
+
+@font-face {
+    font-family: BGaramond;
+    src: url("/fonts/Garamond.ttf");
+}
+
+:root {
+    --bg: #111019;
+    --bg2: #191724;
+    --card: #1c1a29;
+    --primary: #8977fc;
+    --primary2: #c4baff;
+    --text: #f7f5ff;
+    --muted: #a7a3b5;
+    --border: #302d3e;
+    --max: 1120px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Lato, Arial, sans-serif;
+    line-height: 1.6;
+}
+*{
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
