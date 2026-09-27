@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const dotenv = require('dotenv');
-const sanitizeHtml = require('sanitize-html');
 
 dotenv.config();
 
@@ -29,11 +28,6 @@ const PORT = process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
-app.locals.sanitizeHtml = (html) => sanitizeHtml(html || '', {
-  allowedTags: ['p', 'br', 'strong', 'b', 'em', 'i', 'u', 'blockquote', 'ul', 'ol', 'li', 'a', 'h2', 'h3', 'h4'],
-  allowedAttributes: { a: ['href', 'target', 'rel'] },
-  allowedSchemes: ['http', 'https', 'mailto']
-});
 
 app.get('/', async (req, res, next) => {
   try {
