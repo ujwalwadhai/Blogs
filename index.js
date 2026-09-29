@@ -96,7 +96,7 @@ app.get('/sitemap.xml', async (req, res) => {
   const urls = posts.map(post => `
         <url>
             <loc>https://ujwalwadhai.me/blog/${post.alt_id}</loc>
-            <lastmod>${post.updatedAt}</lastmod>
+            <lastmod>${post.updatedAt.toISOString()}</lastmod>
         </url>
     `).join('');
 
@@ -110,7 +110,6 @@ app.get('/sitemap.xml', async (req, res) => {
         </url>
         ${urls}
     </urlset>`;
-    console.log(urls)
   res.type('application/xml').send(sitemap);
 });
 
