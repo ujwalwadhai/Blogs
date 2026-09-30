@@ -1,0 +1,261 @@
+.create-page {
+  width: 90%;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 36px 0 50px;
+}
+
+.create-container {
+  width: 100%;
+}
+
+.create-header {
+  margin-bottom: 30px;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--primary2);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.create-header h1 {
+  margin: 0;
+  color: var(--text);
+  font-family: BGaramond, serif;
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.create-header p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+/* Error */
+.create-error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 13px 16px;
+  border: 1px solid rgba(255, 100, 100, 0.25);
+  border-radius: 8px;
+  background: rgba(255, 100, 100, 0.08);
+  color: #ff9999;
+  font-size: 14px;
+}
+
+/* Form */
+.create-form {
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group > label,
+.content-header label {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Inputs */
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  outline: none;
+  background: var(--bg2);
+  color: var(--text);
+  font-family: Lato, sans-serif;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input {
+  padding: 13px 15px;
+  font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(137, 119, 252, 0.08);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--muted);
+}
+
+/* Help text */
+.field-help {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.field-help code {
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: var(--bg);
+  color: var(--primary2);
+  font-family: monospace;
+}
+
+/* Content */
+.content-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content-header #word-count {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.form-group textarea {
+  display: block;
+  min-height: 500px;
+  padding: 17px;
+  resize: vertical;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.excerpt-input {
+  min-height: 120px !important;
+}
+
+.character-count {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 11px;
+  text-align: right;
+}
+
+.optional {
+  margin-left: 5px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 400;
+}
+
+/* Checkbox */
+.checkbox-group {
+  margin-top: -4px;
+}
+
+.checkbox-label {
+  display: flex !important;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+}
+
+.checkbox-label input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.checkbox-label span {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Buttons */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.cancel-btn,
+.publish-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 17px;
+  border-radius: 7px;
+  font-family: Lato, sans-serif;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.cancel-btn {
+  border: 1px solid var(--border);
+  background: var(--bg2);
+  color: var(--muted);
+}
+
+.cancel-btn:hover {
+  border-color: var(--primary);
+  color: var(--text);
+}
+
+.publish-btn {
+  border: 1px solid var(--primary);
+  background: var(--primary);
+  color: #fff;
+}
+
+.publish-btn:hover {
+  border-color: var(--primary2);
+  background: var(--primary2);
+  color: var(--bg);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .create-page {
+    width: 92%;
+  }
+  .create-header h1 {
+    font-size: 36px;
+  }
+  .create-form {
+    padding: 20px;
+  }
+  .form-group textarea {
+    min-height: 400px;
+  }
+  .form-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+  .cancel-btn,
+  .publish-btn {
+    width: 100%;
+  }
+}
+
+a.brand{
+    text-decoration: none;
+    color: white;
+    font-family: BGaramond, 'Times New Roman', Times, serif;
+}

@@ -8,6 +8,11 @@ dotenv.config();
 const BlogPosts = require('./models/BlogPosts');
 const app = express();
 
+app.use(express.json())
+app.use(express.urlencoded({extended: false}))
+
+app.use(require('./routes/create'));
+
 function getTitle(post) {
   if (post.title && post.title.trim()) return post.title.trim();
   const raw = post.content || '';

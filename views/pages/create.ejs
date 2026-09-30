@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head') %>
+    <link rel="stylesheet" href="/styles/create.css">
+</head>
+<body>
+  <%- include('../partials/navbar', { activePage: 'create' }) %>
+  <main class="create-page">
+    <div class="create-container">
+        <header class="create-header">
+          <span class="eyebrow">
+            NEW BLOG
+          </span>
+          <h1>
+            Write something.
+          </h1>
+          <p>
+            Share thoughts, ideas and stories.
+          </p>
+        </header>
+        <% if (typeof error !=='undefined' && error) { %>
+        <div class="create-error">
+          <span class="fal fa-circle-exclamation"></span>
+          <%= error %>
+        </div>
+        <% } %>
+            <form action="/create" method="POST" class="create-form">
+              <div class="form-group">
+                <label for="alt_id">
+                  Blog ID
+                  <span class="optional">
+                    Required
+                  </span>
+                </label>
+                <input type="text" id="alt_id" name="alt_id" placeholder="my-first-blog"
+                  value="<%= oldData?.alt_id || '' %>" required autocomplete="off">
+                <span class="field-help">
+                  Used in the blog URL. For example:
+                  <code>/blog/my-first-blog</code>
+                </span>
+              </div>
+              <div class="form-group">
+                <label for="title">
+                  Title
+                </label>
+                <input type="text" id="title" name="title" placeholder="Give your blog a title..." maxlength="150"
+                  value="<%= oldData?.title || '' %>" required autocomplete="off">
+              </div>
+              <div class="form-group">
+                <div class="content-header">
+                  <label for="content">
+                    Content
+                  </label>
+                  <span id="word-count">
+                    0 words
+                  </span>
+                </div>
+                <textarea id="content" name="content" placeholder="Start writing..." maxlength="20000"
+                  required><%= oldData?.content || '' %></textarea>
+                <div class="character-count">
+                  <span id="character-count">
+                    0
+                  </span>
+                  / 20,000
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="excerpt">
+                  Excerpt
+                  <span class="optional">
+                    Optional
+                  </span>
+                </label>
+                <textarea id="excerpt" name="excerpt" class="excerpt-input" maxlength="300"
+                  placeholder="A short description of the article..."><%= oldData?.excerpt || '' %></textarea>
+                <span class="field-help">
+                  If left empty, the first 160 characters of the blog
+                  will be used.
+                </span>
+              </div>
+              <div class="form-group">
+                <label for="author">
+                  Author
+                </label>
+                <input type="text" id="author" name="author" placeholder="Author name"
+                  value="<%= oldData?.author || 'Ujwal W.' %>" autocomplete="off">
+              </div>
+              <div class="form-group">
+                <label for="imageUrl">
+                  Image URL
+                  <span class="optional">
+                    Optional
+                  </span>
+                </label>
+                <input type="url" id="imageUrl" name="imageUrl" placeholder="https://example.com/image.jpg"
+                  value="<%= oldData?.imageUrl || '' %>">
+              </div>      
+              <div class="form-group">
+                <label for="imageAlt">
+                  Image description
+                  <span class="optional">
+                    Optional
+                  </span>
+                </label>
+                <input type="text" id="imageAlt" name="imageAlt" maxlength="250" placeholder="Describe the image..."
+                  value="<%= oldData?.imageAlt || '' %>">
+              </div>
+              <div class="form-group">
+                <label for="code">
+                  Security PIN
+                  <span class="optional">
+                    Required
+                  </span>
+                </label>
+                <input type="number" id="code" required name="code" maxlength="10" placeholder="Enter Security PIN">
+              </div>
+              <div class="form-group checkbox-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="pin" <%=oldData?.pin ? 'checked' : '' %>
+                  >
+                  <span>
+                    Pin this blog
+                  </span>
+                </label>
+              </div>
+              <div class="form-actions">
+                <a href="/" class="cancel-btn">
+                  Cancel
+                </a>
+                <button type="submit" class="publish-btn">
+                  <span class="fal fa-paper-plane"></span>
+                  Publish
+                </button>
+              </div>
+            </form>
+      </div>
+    </main>
+    <%- include('../partials/footer') %>
+      <script src="/js/create.js"></script>
+</body>
+</html>
