@@ -4,7 +4,7 @@
   <%- include('../partials/head') %>
   <title><%= pageTitle %></title>
   <link rel="canonical" href="https://ujwalwadhai.me">
-  <meta property="og:title" content="Blogs by Ujwal">
+  <meta property="og:title" content="Blog by Ujwal">
   <meta property="og:description" content="A small corner on the internet for Ujwal's thoughts and ideas.">
   <meta name="description" content="A small corner on the internet for Ujwal's thoughts and ideas.">
   <link rel="stylesheet" href="/styles/blogs.css">
@@ -52,17 +52,18 @@
           <% posts.forEach((post) => { %>
             <article class="blog-card">
               <% if (post.media && post.media.url && String(post.media.type || '').startsWith('image')) { %>
-                <a href="/blog/<%= post.alt_id %>" class="card-image-link">
+                <a href="<%- post.released ? `/blog/${post.alt_id}` : '#' %>" class="card-image-link">
                   <img src="<%= post.media.url %>" alt="<%= post.media.alt || getTitle(post) %>" class="card-image">
                 </a>
               <% } else { %>
-                <a href="/blog/<%= post.alt_id %>" class="card-image-link placeholder-image">
+                <a href="<%- post.released ? `/blog/${post.alt_id}` : '#' %>" class="card-image-link placeholder-image">
                   <span class="fal fa-feather-pointed"></span>
                 </a>
               <% } %>
 
               <div class="card-body">
                 <div class="card-meta">
+                  <% if(post.released){ %>
                   <% if (post.pin) { %>
                     <span class="fas fa-thumbtack pin"></span>• 
                   <% } else if (new Date(post.createdAt) >= new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)) { %>
@@ -78,10 +79,18 @@
                   %>
                   <span><%= minutes %> mins</span>• 
                   <span><%= new Date(post.createdAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' }) %></span>
+                  <% } else { %>
+                    <span class="new-badge">SPECIAL</span>• 
+                    <span><%= new Date(post.createdAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' }) %></span>
+                  <% } %>
                 </div>
-                <h3><a href="/blog/<%= post.alt_id %>"><%= getTitle(post) %></a></h3>
+                <h3><a href="<%- post.released ? `/blog/${post.alt_id}` : '#' %>"><%= getTitle(post) %></a></h3>
                 <p><%= post.excerpt || getExcerpt(post) %></p>
-                <a class="read-link" href="/blog/<%= post.alt_id %>">Read article <span class="fal fa-arrow-right"></span></a>
+                <% if(post.released){ %>
+                  <a class="read-link" href="/blog/<%= post.alt_id %>">Read article <span class="fal fa-arrow-right"></span></a>
+                <% } else { %>
+                  <a class="read-link" href="#" style="color: rgb(40, 191, 40)">Coming soon</a>
+                <% } %>
               </div>
             </article>
           <% }) %>

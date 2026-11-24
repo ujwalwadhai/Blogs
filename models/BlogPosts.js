@@ -15,7 +15,8 @@ const blogSchema = new mongoose.Schema(
     pin: { type: Boolean, default: false },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date },
-    deleted: { type: Boolean, default: false }
+    deleted: { type: Boolean, default: false },
+    released: {type: Boolean, default: false}
   },
   {
     collection: 'blogposts'

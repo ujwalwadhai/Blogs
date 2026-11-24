@@ -42,7 +42,7 @@ app.get('/', async (req, res, next) => {
 
     res.render('pages/index', {
       posts,
-      pageTitle: 'Blogs by Ujwal',
+      pageTitle: 'Blog by Ujwal',
       activePage: 'home'
     });
   } catch (error) {
@@ -56,6 +56,7 @@ app.get('/blog/:id', async (req, res, next) => {
 
     const query = {
       deleted: { $ne: true },
+      released: true,
       $or: [
         { alt_id: id }
       ]
